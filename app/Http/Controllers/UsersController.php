@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use Validator;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -13,7 +15,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::get();
+        return response()->json($users, 200);
     }
 
     /**
@@ -34,7 +37,22 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            "first_name" => "required",
+            "last_name" => "required",
+            "role" => "required",
+            "photo" => "required",
+            "email" => "required|email",
+            "password" => "required|min:8",
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if($validator->fails()) {
+            return response()->json(null, 400);
+        }
+
+        $user = User::create($request->all());
+        return response()->json($user, 200);
     }
 
     /**
@@ -45,7 +63,12 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        if(is_null($user)) {
+            return response()->json(null, 404);
+        }
+
+        return response()->json($user, 200);
     }
 
     /**
@@ -68,7 +91,27 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        if(is_null($user)) {
+            return response()->json(null, 404);
+        }
+
+        $rules = [
+            "first_name" => "required",
+            "last_name" => "required",
+            "role" => "required",
+            "photo" => "required",
+            "email" => "required|email",
+            "password" => "required|min:8",
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if($validator->fails()) {
+            return response()->json(null, 400);
+        }
+
+        $user->update($request->all());
+        return response()->json($user, 200);
     }
 
     /**
@@ -79,6 +122,12 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        if(is_null($user)) {
+            return response()->json(null, 404);
+        }
+
+        $user->delete();
+        return response()->json($user, 200);
     }
 }

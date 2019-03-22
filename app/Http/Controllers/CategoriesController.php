@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use Validator;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -13,7 +15,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::get();
+        return response()->json($categories, 200);
     }
 
     /**
@@ -34,7 +37,15 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = ["name" => "required|min:2|max:240"];
+        $validator = Validator::make($request->all(), $rules);
+
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $category = Category::create($request->all());
+        return response()->json($category, 200);
     }
 
     /**
@@ -45,7 +56,12 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = Category::find($id);
+        if(is_null($category)) {
+            return response()->json(null, 404);
+        }
+
+        return response()->json($category, 200);
     }
 
     /**
@@ -68,7 +84,21 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+
+        if(is_null($category)) {
+            return response()->json(null, 404);
+        }
+
+        $rules = ["name" => "required|min:2|max:240"];
+        $validator = Validator::make($request->all(), $rules);
+
+        if($validator->fails()) {
+            return response()->json($validator->error(), 400);
+        }
+
+        $category->update($request->all());
+        return response()->json($category, 200);
     }
 
     /**
@@ -79,6 +109,12 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        if(is_null($category)) {
+            return response()->json(null, 404);
+        }
+
+        $category->delete();
+        return response()->json(null, 204);
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Reply;
+use Validator;
 use Illuminate\Http\Request;
 
 class RepliesController extends Controller
@@ -13,7 +15,8 @@ class RepliesController extends Controller
      */
     public function index()
     {
-        //
+        $replies = Reply::get();
+        return response()->json($replies, 200);
     }
 
     /**
@@ -34,7 +37,20 @@ class RepliesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            "name" => "required", 
+            "email" => "required|email",
+            "content" => "required",
+            "comment_id" => "required"
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $reply = Reply::create($request->all());
+        return response()->json($reply, 201);
     }
 
     /**
@@ -45,7 +61,12 @@ class RepliesController extends Controller
      */
     public function show($id)
     {
-        //
+        $reply = Reply::find($id);
+        if(is_null($reply)) {
+            return response()->json(null, 404);
+        }
+
+        return response()->json($reply, 200);
     }
 
     /**
@@ -68,7 +89,24 @@ class RepliesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $reply = Reply::find($id);
+        if(is_null($reply)) {
+            return response()->json(null, 404);
+        }
+        $rules = [
+            "name" => "required", 
+            "email" => "required|email",
+            "content" => "required",
+            "comment_id" => "required"
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $reply->update($request->all());
+        return response()->json($reply, 200);
     }
 
     /**
@@ -79,6 +117,12 @@ class RepliesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $reply = Reply::find($id);
+        if(is_null($reply)) {
+            return response()->json(null, 404);
+        }
+
+        $reply->delete();
+        return response()->json(null, 204);
     }
 }

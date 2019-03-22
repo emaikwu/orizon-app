@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
+use Validator;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -13,7 +15,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return response()->json([],200);
+        $posts = Post::get();
+        return response()->json($posts ,200);
     }
 
     /**
@@ -34,7 +37,22 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            "title" => "required|max:240",
+            "status" => "required",
+            "category_id" => "required",
+            "content" => "required",
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $post = Post::create($request->all());
+
+
+        return response()->json($post, 201);
     }
 
     /**
@@ -45,7 +63,12 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        if(is_null($post)) {
+            return response()->json(null, 404);
+        }
+
+        return response()->json($post, 200);
     }
 
     /**
@@ -68,7 +91,25 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+        if(is_null($post)) {
+            return response()->json(null, 404);
+        }
+
+        $rules = [
+            "title" => "required|max:240",
+            "status" => "required",
+            "category_id" => "required",
+            "content" => "required",
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $post->update($request->all());
+        return response()->json($post, 200);
     }
 
     /**
@@ -79,6 +120,12 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        if(is_null($post)) {
+            return response()->json(null, 404);
+        }
+
+        $post->delete();
+        return response()->json(null, 204);
     }
 }

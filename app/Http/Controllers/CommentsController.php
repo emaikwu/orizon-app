@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
+use Validator;
 use Illuminate\Http\Request;
 
 class CommentsController extends Controller
@@ -13,7 +15,8 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        //
+         $comments = Comment::get();
+        return response()->json($comments, 200);
     }
 
     /**
@@ -34,7 +37,20 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            "name" => "required", 
+            "email" => "required|email",
+            "content" => "required",
+            "post_id" => "required"
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $comment = Comment::create($request->all());
+        return response()->json($comment, 201);
     }
 
     /**
@@ -45,7 +61,12 @@ class CommentsController extends Controller
      */
     public function show($id)
     {
-        //
+        $comment = Comment::find($id);
+        if(is_null($comment)) {
+            return response()->json(null, 404);
+        }
+
+        return response()->json($comment, 200);
     }
 
     /**
@@ -68,7 +89,24 @@ class CommentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $comment = Comment::find($id);
+        if(is_null($comment)) {
+            return response()->json(null, 404);
+        }
+        $rules = [
+            "name" => "required", 
+            "email" => "required|email",
+            "content" => "required",
+            "post_id" => "required"
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $comment->update($request->all());
+        return response()->json($comment, 200);
     }
 
     /**
@@ -79,6 +117,12 @@ class CommentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+         $comment = Comment::find($id);
+        if(is_null($comment)) {
+            return response()->json(null, 404);
+        }
+
+        $comment->delete();
+        return response()->json(null, 204);
     }
 }
