@@ -1,5 +1,7 @@
 <?php
 
+echo dirname();
+
 return [
 
     /*
