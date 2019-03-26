@@ -10673,7 +10673,7 @@ p {
 }
 
 .logo {
-  width: 10%;
+  width: 20%;
 }
 
 .logo a {
@@ -10690,7 +10690,7 @@ ul.navigation {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  width: 85%;
+  width: 80%;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -11141,7 +11141,7 @@ a.side-active {
   }
 
   #hero .profile .profile-name h1 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
 
   #hero .profile .profile-img img {
@@ -11180,10 +11180,6 @@ a.side-active {
 
   section.project .client {
     margin-bottom: 30px;
-  }
-
-  div.highlights {
-    margin: 70px;
   }
 
   div.highlights .highlight-item .highlight-image img {
@@ -11240,8 +11236,13 @@ a.side-active {
     padding: 10px 0;
   }
 
-  #header .logo img {
-    margin-left: 10px;
+  #header .logo a {
+    margin-left: 0;
+  }
+
+  #header .logo a img {
+    margin-left: 0;
+    height: 45px;
   }
 }
 
