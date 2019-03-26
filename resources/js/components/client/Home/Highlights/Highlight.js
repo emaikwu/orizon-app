@@ -1,11 +1,10 @@
 import React from 'react';
-import laravel from '../../../../imgs/laravel.png';
 
 const Highlight = (props) => {
 	return (
 		<div className="highlight-item cols-3">
 			<div className="highlight-image">
-				<img src={laravel} alt="" className="img-resp"/>
+				<img src={props.image} alt="" className="img-resp"/>
 			</div>
 			<div className="highlight-text">
 				<h3>{props.title}</h3>

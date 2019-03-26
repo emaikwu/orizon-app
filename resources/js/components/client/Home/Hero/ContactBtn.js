@@ -1,9 +1,9 @@
 import React from 'react';
 
-const ContactBtn = () => {
+const ContactBtn = (props) => {
 	return (
 		<div className="profile-btn">
-			<button className="hire">Hire me</button>
+			<button className="hire" onClick={props.onClick}>Hire me</button>
 		</div>
 	)
 }

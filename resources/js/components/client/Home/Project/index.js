@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import img from '../../../../imgs/showcase.png';
 import customer from '../../../../imgs/customer-2.jpg';
+import quote from '../../../../imgs/quote.png';
 
 class Project extends Component {
 	render() {
@@ -9,16 +10,17 @@ class Project extends Component {
 				<div className="project-title">
 					<h2>Latest Project</h2>
 				</div>
-				<article className="client cols-40">
+				<article className="client cols-2">
 					<div className="client-data">
 						<img src={customer} alt="" className="img-resp"/>
 						<h3>Mx Jane Doe <span>Manager</span></h3>
 					</div>
 					<div className="client-remarks">
+						<img src={quote} alt="quote mark" className="quote"/>
 						<p>The person is saying the people has to rise up against the government.</p>
 					</div>
 				</article>
-				<article className="project-item cols-60">
+				<article className="project-item cols-2">
 					<div className="project-image">
 						<img src={img} alt="" className="img-resp"/>
 					</div>

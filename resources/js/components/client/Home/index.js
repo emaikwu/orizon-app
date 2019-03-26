@@ -9,11 +9,9 @@ import Header from '../../layout/Header';
 import Footer from '../../layout/Footer';
 import Posts from './Posts';
 import Project from './Project';
+import Slide from './Slide';
 
 class Home extends Component {
-	componentDidMount() {
-		axios.get("/api/v1/posts").then(res => console.log(res.data));
-	}
 	render() {	
 	  const meta = {title:"Home - Emaikwu Innocent"};
 	  return (

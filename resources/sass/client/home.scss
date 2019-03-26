@@ -9,30 +9,32 @@ p {
 }
 .logo {
   width: 10%;
-  img {
-    height: 50px;
-    margin-left: 20px;
+  a {
+    padding: 0 10px;
+    display: inline-block;
+    margin-left: 10px;
+    img {
+      height: 60px;
+    }
   }
 }
 ul.navigation {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 70%;
-  margin: 0 auto;
-  text-align: 0 center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 85%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
   li {
-    display: inline-block;
-    text-transform: uppercase;
-    padding: 0 15px;
     a {
+      text-transform: uppercase;
       font-size: 17px;
       color: $white;
       display: block;
       font-weight: 400;
       text-decoration: none;
-      padding: 25px 10px;
+      padding: 25px 16px;
     }
     a.is-active {
       color: #0f69c3;
@@ -44,11 +46,11 @@ ul.navigation {
 }
 #hero {
   background-color: $blue;
-  height: 100vh;
+  min-height: 760px;
   .profile {
     width: 80%;
     margin: 0 auto;
-    padding-top: 40px;
+    padding-top: 70px;
     text-align: center;
     .profile-img {
       text-align: center;
@@ -109,15 +111,17 @@ ul.navigation {
   padding: 0 15px;
 }
 .highlights {
-  width: 100%;
-  margin: 100px 0;
+  width: inherit;
+  margin: 170px 0;
   .highlight-item {
-      .highlight-image {
+    margin-bottom: 20px;
+    .highlight-image {
       width: 60%;
       margin: 0 auto;
       text-align: center;
       img {
-        width: 80%;
+        width: 45%;
+        margin-bottom: 15px;
       }
     }
   }
@@ -155,6 +159,7 @@ section.project {
   .project-text {
     text-align: center;
     margin-top: 15px;
+    padding: 0 10px;
     a {
       text-decoration: underline;
       h3 {
@@ -163,12 +168,62 @@ section.project {
       }
     }
     p {
-      font-size: 1rem;
+      font-size: 1.1rem;
+      text-align: left;
+    }
+  }
+  .client {
+    .client-data {
+      text-align: center;
+      margin: 40px 0;
+      img {
+        width: 170px;
+        border-radius: 50%;
+      }
+      h3 {
+        font-size: 1.5rem;
+        margin-top: 12px;
+        span::before {
+          content: "|";
+          font-size: 1.6rem;
+          display: inline-block;
+          margin-right: 15px;
+          color: $gray;
+          font-weight: 300;
+        }
+        span {
+          font-size: 0.9rem;
+          text-transform: uppercase;
+          color: $gray;
+          margin-left: 10px;
+        }
+      }
+    }
+    .client-remarks {
+      padding: 10px;
+      border: 1.5px dashed silver;
+      text-align: center;
+      width: 90%;
+      margin: 0 auto;
+      position: relative;
+      img.quote {
+        width: 30px;
+        position: absolute;
+        top: -17px;
+        left: 10px;
+        background: white;
+        padding: 5px;
+      }
+      p {
+        color: $dark;
+        padding-left: 10px;
+        font-size: 1.1rem;
+      }
     }
   }
 }
 section.home-posts {
-  padding: 40px 0;
+  padding: 40px 0 100px;
   .home-post-title {
     margin-bottom: 50px;
     h2 {
@@ -177,9 +232,7 @@ section.home-posts {
       text-align: center;
     }
   }
-  article.home-post-item {
-    border: 1px solid $gray;
-    padding: 15px 10px 25px;
+  .home-post-item {
     text-align: center;
     height: inherit;
     .home-post-image {
@@ -188,9 +241,7 @@ section.home-posts {
     .home-post-text {
       text-align: center;
       .home-post-heading {
-        color: $white;
-        background: $blue;
-        padding: 5px;
+        color: $dark;
         h3 {
           margin: 0;
           font-size: 1rem;
@@ -205,7 +256,7 @@ section.home-posts {
       }
     }
     .home-post-link {
-      width: 130px;
+      width: 153px;
       background: $dark;
       background: linear-gradient(0deg, $dark 30%, $dark 70%);
       padding: 7px;
@@ -226,9 +277,6 @@ section.home-posts {
       background: linear-gradient(55deg, #223 22%, $blue 70%);
     }
   }
-  article.home-post-item:hover {
-    box-shadow: 2px 3px 6px $gray;
-  }
 }
 .clearfix:after {
   content: "";
@@ -237,101 +285,84 @@ section.home-posts {
 }
 .footer {
   background-color: $dark;
-  background-image: url("../../js/imgs/web.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-  height: 300px;
   position: relative;
   margin-top: 80.2px;
-  .footer-wrapper {
-    background: rgba(28, 31, 32, 0.89);
-    height: inherit;
-    width: 100%;
-    .social {
-      .social-title {
-        background: $blue;
-        width: 350px;
-        padding: 5px 10px;
-        position: absolute;
-        top: -75px;
-        left: calc(50% - 175px);
-        h2 {
-        font-size: 48px;
-        text-align: center;
-        font-weight: lighter;
-        color: $white;
-        }
-      }
-      .social-wrapper {
-        width: 300px;
-        margin: 0 auto;
-        padding-top: 30px;
-        .social-group {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-          .social-item {
-            float: left;
-            width: 50px;
-            height: 50px;
-            text-align: center;
-            margin: 0 12.5px;
-            border: 1px solid #fff;
-            border-radius: 50%;
-            transition: all 0.4s;
-            a {
-              color: $white;
-              text-decoration: none;
-              font-size: 27px;
-              margin: 0;
-            }
-          }
-          .social-item:hover {
-            color: $blue;
-            border: 1px solid $blue;
-            a {
-              color: $blue;
-            }
-          }
-        }
-      }
-    }
-    .copy {
-      padding: 25px;
+  .social {
+    .social-title {
+      background: $blue;
+      width: 350px;
+      padding: 10px 10px;
       position: absolute;
-      width: 100%;
-      bottom: 0;
-      p {
-        color: white;
-        font-size: 18px;
-        text-align: center;
-        margin: 0;
+      top: -77px;
+      left: calc(50% - 175px);
+      h2 {
+      font-size: 48px;
+      text-align: center;
+      font-weight: lighter;
+      color: $white;
+      margin: 0;
       }
     }
-    .footer-contact {
-      color: #Fff;
-      font-size: 17px;
-      margin-top: 35px;
-      .phone, .email {
-        float: left;
-        width: 50%;
-        font-family: Comfortaa, cursive;
-        text-align: center;
-        h3 {
-          text-transform: uppercase;
+    .social-wrapper {
+      width: 300px;
+      margin: 0 auto;
+      padding-top: 30px;
+      .social-group {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        .social-item {
+          float: left;
+          width: 50px;
+          height: 50px;
+          text-align: center;
+          margin: 0 12.5px;
+          border: 1px solid #fff;
+          border-radius: 50%;
+          transition: all 0.4s;
+          a {
+            color: $white;
+            text-decoration: none;
+            font-size: 27px;
+            margin: 0;
+          }
         }
-        p {
-          margin: 0;
+        .social-item:hover {
+          color: $blue;
+          border: 1px solid $blue;
+          a {
+            color: $blue;
+          }
         }
       }
     }
   }
-}
-.cols-4 {
-  float: left;
-  width: 25%;
+  .footer-contact {
+    color: $white;
+    font-size: 17px;
+    margin-top: 35px;
+    .phone, .email {
+      text-align: center;
+      margin-bottom: 10px;
+      h3 {
+        font-family: Comfortaa, cursive;
+        text-transform: uppercase;
+      }
+      p {
+        margin: 0;
+        color: $white;
+      }
+    }
+  }
+  .copy {
+    padding: 35px;
+    p {
+      color: white;
+      font-size: 18px;
+      text-align: center;
+      margin: 0;
+    }
+  }
 }
 .cols-3 {
   float: left;
@@ -341,11 +372,30 @@ section.home-posts {
   float: left;
   width: 50%;
 }
-.cols-60 {
-  float: left;
-  width: 70%;
+.feedback-title {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 3.8rem;
 }
-.cols-40 {
-  float: left;
-  width: 30%;
+a.side-link {
+  color: $dark;
+  text-decoration: none;
+  background-color: transparent;
+  padding: 10px 80px;
+  font-size: 1rem;
+  width: 230px;
+  transition: all 0.3s;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+}
+a.side-link:hover {
+  background: #e8e8e8;
+}
+a.side-active {
+  background: #e8e8e8;
+}
+.cycle-slideshow {
+  height: 200px;
+  width: 600px;
+  margin: 0 auto;
 }

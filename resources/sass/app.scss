@@ -13,4 +13,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-@import './client/home.scss';
+@import './client/home';
+
+//Media queries
+@import 'media';
