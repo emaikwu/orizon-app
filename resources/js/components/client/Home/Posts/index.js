@@ -39,7 +39,6 @@ class Posts extends Component {
 			<section className={classes.root} className="home-posts">
 				<div className="home-post-title">
 					<h2>Latest Posts</h2>
-					<hr/>
 				</div>
       	<Grid container spacing={16}>
       		{this.state.posts.map((post, i) => {

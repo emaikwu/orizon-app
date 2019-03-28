@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import profile from '../../../../imgs/profile.jpg';
+import profile from '../../../../assets/imgs/profile.jpg';
 import ContactBtn from './ContactBtn';
 import FeedBack from '../../../utils/FeedBack';
 

@@ -4,7 +4,7 @@ import {AppBar, Toolbar, IconButton, Button} from '@material-ui/core';
 import {NavLink, Link} from 'react-router-dom';
 import {MdMenu} from 'react-icons/md';
 import SideDrawer from './Drawer';
-import logo from '../../imgs/logo2.png';
+import logo from '../../assets/imgs/logo2.png';
 
 class Header extends Component {
   constructor(props) {

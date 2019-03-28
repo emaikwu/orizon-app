@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import {FaFacebookF, FaInstagram, FaTwitter, FaGithub} from 'react-icons/fa';
 import {MdFeedback} from 'react-icons/md';
 
 import {IconButton} from '@material-ui/core';
 import FeedBack from '../utils/FeedBack';
+import SocialMediaIcons from '../utils/SocialMediaIcons';
 
 class Header extends Component {
 	constructor(props) {
@@ -24,19 +24,7 @@ class Header extends Component {
   render() {
     return (
       <footer className="footer">
-      	<div className="social">
-      		<div className="social-title">
-      			<h2>Lets Socialize</h2>
-      		</div>
-      		<div className="social-wrapper clearfix">
-      			<ul className="social-group">
-      				<li className="social-item"><a href="https://facebook.com/emai.innocent"><FaFacebookF/></a></li>
-      				<li className="social-item"><a href="https://instagram.com/emaikwu_i"><FaInstagram/></a></li>
-      				<li className="social-item"><a href="https://twitter.com/emaikwu_i"><FaTwitter/></a></li>
-      				<li className="social-item"><a href="https://github.com/emaikwu"><FaGithub/></a></li>
-      			</ul>
-      		</div>
-      	</div>
+      	<SocialMediaIcons/>
       	<div className="footer-contact wrapper clearfix">
       		<div className="phone cols-2">
       			<h3>Phone</h3>

@@ -1,0 +1,39 @@
+.contact {
+	h2 {
+		color: $blue;
+		font-family: $mont;
+		font-size: 1.8rem;
+    text-transform: uppercase;
+	}
+  margin-top: 120px;
+  .phone {
+  	margin-bottom: 40px;
+  	p {
+  		margin: 0;
+	    font-size: 1.2rem;
+  		margin: 0;
+  		font-family: $mont;
+  		font-weight: 500;
+  	}
+	}
+	.social-media {
+		margin-bottom: 40px;
+		ul.social-group {
+	    display: flex;
+	    margin: 0;
+	    padding: 0;
+	    list-style: none;
+	    li.social-item {
+		    width: 40px;
+		    height: 40px;
+		    margin: 5px 20px 30px 0;
+		    a {
+		    	color: $dark;
+		    	svg {
+		    		font-size: 40px;
+		    	}
+		    }
+			}
+		}
+	}
+}

@@ -1,8 +1,7 @@
 import React from 'react';
 import DocumentMeta from 'react-document-meta';
 
-import Header from '../../layout/Header';
-import Footer from '../../layout/Footer';
+import Layout from '../../layout';
 
 const About = () => {
   const meta = {
@@ -10,11 +9,11 @@ const About = () => {
   };
   return (
     <DocumentMeta {...meta}>
-      <Header/>
-      <div className="wrapper">
+      <Layout/>
+        <div className="wrapper">
 
-      </div>
-      <Footer/>
+        </div>
+      <Layout/>
     </DocumentMeta>
   )
 }

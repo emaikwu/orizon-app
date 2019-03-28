@@ -5,8 +5,7 @@ import {connect} from 'react-redux';
 
 import Hero from './Hero';
 import Highlights from './Highlights';
-import Header from '../../layout/Header';
-import Footer from '../../layout/Footer';
+import Layout from '../../layout';
 import Posts from './Posts';
 import Project from './Project';
 import Slide from './Slide';
@@ -16,14 +15,14 @@ class Home extends Component {
 	  const meta = {title:"Home - Emaikwu Innocent"};
 	  return (
 	    <DocumentMeta {...meta}>
-	      <Header/>
-	      <Hero/>
-	      <div className="wrapper">
-		      <Highlights/>
-		      <Project/>
-		      <Posts/>
-	      </div>
-	     	<Footer/>
+	      <Layout>
+		      <Hero/>
+		      <div className="wrapper">
+			      <Highlights/>
+			      <Project/>
+			      <Posts/>
+		      </div>
+	     	</Layout>
 	    </DocumentMeta>
 	  )
 	}

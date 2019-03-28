@@ -26,10 +26,13 @@
     },
     "dependencies": {
         "@material-ui/core": "^3.9.2",
+        "formsy-react": "^1.1.5",
         "react-document-meta": "^3.0.0-beta.2",
+        "react-dropzone": "^10.0.6",
         "react-icons": "^3.5.0",
         "react-redux": "^6.0.1",
-        "react-router-dom": "^5.0.0",
+        "react-router-dom": "4.3.1",
+        "react-share": "^2.4.0",
         "react-tinymce": "^0.7.0",
         "redux": "^4.0.1"
     }

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import Highlight from './Highlight';
-import instructor from '../../../../imgs/instructor1.png';
-import backend from '../../../../imgs/backend.png';
-import frontend from '../../../../imgs/frontend.png';
+import instructor from '../../../../assets/imgs/instructor1.png';
+import backend from '../../../../assets/imgs/backend.png';
+import frontend from '../../../../assets/imgs/frontend.png';
 
 class Hightlights extends Component {
 	constructor(props) {

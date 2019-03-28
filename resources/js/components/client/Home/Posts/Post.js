@@ -3,7 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
 
-import img from '../../../../imgs/react.png';
+import img from '../../../../assets/imgs/react.png';
 
 const Post = (props) => {
 	return (

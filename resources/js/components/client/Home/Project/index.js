@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import img from '../../../../imgs/showcase.png';
-import customer from '../../../../imgs/customer-2.jpg';
-import quote from '../../../../imgs/quote.png';
+import img from '../../../../assets/imgs/showcase.png';
+import customer from '../../../../assets/imgs/customer-2.jpg';
+import quote from '../../../../assets/imgs/quote.png';
 
 class Project extends Component {
 	render() {

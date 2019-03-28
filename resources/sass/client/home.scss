@@ -34,12 +34,12 @@ ul.navigation {
       display: block;
       font-weight: 400;
       text-decoration: none;
-      padding: 25px 16px;
+      padding: 24.5px 16px;
     }
     a.is-active {
       color: #0f69c3;
-      font-weight: 600;
-      border-bottom: 3px solid $white;
+      font-weight: 500;
+      border-bottom: 4px solid $white;
       color: $white;
     }
   }
@@ -285,24 +285,8 @@ section.home-posts {
 }
 .footer {
   background-color: $dark;
-  position: relative;
   margin-top: 80.2px;
   .social {
-    .social-title {
-      background: $blue;
-      width: 350px;
-      padding: 10px 10px;
-      position: absolute;
-      top: -77px;
-      left: calc(50% - 175px);
-      h2 {
-      font-size: 48px;
-      text-align: center;
-      font-weight: lighter;
-      color: $white;
-      margin: 0;
-      }
-    }
     .social-wrapper {
       width: 300px;
       margin: 0 auto;
@@ -366,11 +350,13 @@ section.home-posts {
 }
 .cols-3 {
   float: left;
-  width: 33.33%;
+  width: 31.33%;
+  margin: 0 1%;
 }
 .cols-2 {
   float: left;
-  width: 50%;
+  width: 48%;
+  margin: 0 1%
 }
 .feedback-title {
   text-transform: uppercase;
@@ -398,4 +384,17 @@ a.side-active {
   height: 200px;
   width: 600px;
   margin: 0 auto;
+}
+.loading {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .loading-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
 }
