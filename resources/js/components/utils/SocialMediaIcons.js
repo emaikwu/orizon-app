@@ -1,19 +1,26 @@
 import React from 'react';
-import {FaFacebookF, FaInstagram, FaTwitter, FaGithub} from 'react-icons/fa';
+import {connect} from 'react-redux';
+import {FaFacebookF, FaInstagram, FaTwitter, FaGithub, FaYoutube, FaSnapchat} from 'react-icons/fa';
 
-const SocialMediaIcons = () => {
+const SocialMediaIcons = (props) => {
 	return (
 		<div className="social">
   		<div className="social-wrapper clearfix">
   			<ul className="social-group">
-  				<li className="social-item"><a href="https://facebook.com/emai.innocent"><FaFacebookF/></a></li>
-  				<li className="social-item"><a href="https://instagram.com/emaikwu_i"><FaInstagram/></a></li>
-  				<li className="social-item"><a href="https://twitter.com/emaikwu_i"><FaTwitter/></a></li>
-  				<li className="social-item"><a href="https://github.com/emaikwu"><FaGithub/></a></li>
+          {props.social.facebook && <li className="social-item"><a href={props.social.facebook}><FaFacebookF/></a></li>}
+          {props.social.instagram && <li className="social-item"><a href={props.social.instagram}><FaInstagram/></a></li>}
+          {props.social.twitter && <li className="social-item"><a href={props.social.twitter}><FaTwitter/></a></li>}
+          {props.social.github && <li className="social-item"><a href={props.social.github}><FaGithub/></a></li>}
+          {props.social.youtube && <li className="social-item"><a href={props.social.youtube}><FaYoutube/></a></li>}
+          {props.social.snapchat && <li className="social-item"><a href={props.social.snapchat}><FaSnapchat/></a></li>}
   			</ul>
   		</div>
   	</div>
 	)
 }
 
-export default SocialMediaIcons;
+const mapStateToProps = (state) => ({
+  social: state.settings[0]
+});
+
+export default connect(mapStateToProps)(SocialMediaIcons);

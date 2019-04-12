@@ -89,10 +89,10 @@ class Header extends Component {
                   </Link>
                 </li>
                  <li className="nav-item has-treeview">
-                  <Link to="/admin/site-data" className="nav-link">
+                  <Link to="/admin/settings" className="nav-link">
                     <i className="nav-icon fa fa-book"></i>
                     <p>
-                      Data
+                      App settings
                       <i className="fa fa-angle-right right"></i>
                     </p>
                   </Link>

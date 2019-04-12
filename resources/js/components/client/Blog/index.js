@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom';
 
 import DocumentMeta from 'react-document-meta';
 import Layout from '../../layout';
-import img from '../../../imgs/san-francisco.jpg';
-import img2 from '../../../imgs/laravel.png';
-import img3 from '../../../imgs/react.png';
+import img from '../../../assets/imgs/san-francisco.jpg';
+import img2 from '../../../assets/imgs/laravel.png';
+import img3 from '../../../assets/imgs/react.png';
 
 
 class Blog extends Component {
@@ -15,7 +15,7 @@ class Blog extends Component {
     };
     return(
       <DocumentMeta {...meta}>
-        <Layout/>
+        <Layout>
           <div className="wrapper">
             <section className="post-list clearfix">
               <article className="post-item cols-3">
@@ -72,7 +72,7 @@ class Blog extends Component {
               </article>
             </section>
           </div>
-        <Layout/>
+        </Layout>
       </DocumentMeta>
     )
   }

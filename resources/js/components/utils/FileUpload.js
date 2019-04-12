@@ -19,7 +19,7 @@ class FileUpload extends Component {
 				  {({getRootProps, getInputProps}) => (
 				    <section>
 				      <div {...getRootProps()}>
-				        <input {...getInputProps()} />
+				        <input {...getInputProps()} name={this.props.name} />
 				        <p>Drag 'n' drop some files here, or click to select files</p>
 				      </div>
 				    </section>

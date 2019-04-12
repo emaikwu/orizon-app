@@ -9,11 +9,11 @@ const About = () => {
   };
   return (
     <DocumentMeta {...meta}>
-      <Layout/>
+      <Layout>
         <div className="wrapper">
 
         </div>
-      <Layout/>
+      </Layout>
     </DocumentMeta>
   )
 }

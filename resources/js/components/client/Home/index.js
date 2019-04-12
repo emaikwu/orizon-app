@@ -11,6 +11,12 @@ import Project from './Project';
 import Slide from './Slide';
 
 class Home extends Component {
+	constructor(props) {
+		super(props);
+	}
+
+
+
 	render() {	
 	  const meta = {title:"Home - Emaikwu Innocent"};
 	  return (

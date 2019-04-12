@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import profile from '../../../../assets/imgs/profile.jpg';
 import ContactBtn from './ContactBtn';
 import FeedBack from '../../../utils/FeedBack';
@@ -29,7 +30,7 @@ class Hero extends Component{
               <h1>Emaikwu Innocent</h1>
           </div>
           <div className="profile-desc">
-            <p>Freelance full stack web developer and code instructor. I build smalll to large scaleable modern web applications that will meet the demand for your venture, a passionate code instructor.</p>
+            {this.props.heroText && <p>{this.props.heroText}</p>}
             <h2>Build. Learn. Evolve</h2>
           </div>
               
@@ -48,4 +49,8 @@ class Hero extends Component{
 
 }
 
-export default Hero;
+const mapStateToProps = (state) => ({
+  heroText: state.settings[0].intro
+});
+
+export default connect(mapStateToProps)(Hero);

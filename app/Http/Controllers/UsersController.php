@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Validator;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;    
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -50,8 +52,15 @@ class UsersController extends Controller
         if($validator->fails()) {
             return response()->json(null, 400);
         }
-
-        $user = User::create($request->all());
+        $data = [];
+        $data["first_name"] = $request->first_name;
+        $data["last_name"] = $request->last_name;
+        $data["role"] = $request->role;
+        $data["photo"] = $request->photo;
+        $data["email"] = $request->email;
+        $data["password"] = Hash::make($request->password);
+        $data["api_token"] = Str::random(60);
+        $user = User::create($data);
         return response()->json($user, 200);
     }
 

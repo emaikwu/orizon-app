@@ -1,19 +1,26 @@
 import React, {Component} from 'react';
 import {CircularProgress} from '@material-ui/core';
+import {connect} from 'react-redux';
 
 import Header from './Header';
 import Footer from './Footer';
+import {allSettings} from '../../actions/settings';
 
 class Layout extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			loading: true
+			loading: true,
+			data: []
 		}
 	}
 
 	componentDidMount() {
-		this.setState({loading:false});
+		this.props.dispatch(allSettings()).then(res => {
+			if(res) {
+				this.setState({data:res, loading:false})
+			}
+		})
 	}
 
 	render() {
@@ -22,7 +29,7 @@ class Layout extends Component {
 				{this.state.loading ?
 					<div className="loading">
 						<div className="loading-inner">
-							<CircularProgress style={{color:"#007bff"}} thickness={6} open={this.state.loading}/>
+							<CircularProgress style={{color:"#007bff"}} thickness={8} open={this.state.loading}/>
 						</div>
 					</div>
 					:
@@ -37,4 +44,4 @@ class Layout extends Component {
 	}
 }
 
-export default Layout;
+export default connect()(Layout);

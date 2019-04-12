@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {FaTrash} from 'react-icons/fa';
+import {connect} from 'react-redux';
 import axios from 'axios';
 import DocumentMeta from 'react-document-meta';
 
 import AdminLayout from '../../layout/AdminLayout';
 import ContentWrapper from '../ContentWrapper';
 import ActionDialog from '../../utils/ActionDialog';
+import {allPosts} from '../../../actions/posts';
 
 class Posts extends Component {
 	constructor(props) {
@@ -41,10 +43,15 @@ class Posts extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('/api/v1/posts').then(posts => this.setState({posts: posts.data}));
+		this.props.dispatch(allPosts()).then(res => {
+			this.setState({
+				posts: res.payload 
+			});
+		})
 	}
 
 	render() {
+		this.props.dispatch(allPosts());
 		const meta = {title: "Manage posts - Emaikwu Innocent"};
 		return (
 			<DocumentMeta {...meta}>
@@ -98,5 +105,9 @@ class Posts extends Component {
 	}
 }
 
-export default Posts;
+const mapStateToProps = (state) => ({
+	posts: state.posts
+})
+
+export default connect(mapStateToProps)(Posts);
 

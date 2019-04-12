@@ -1,8 +1,8 @@
 import React from 'react';
-import laravel from '../../../../imgs/laravel.png';
-import nodejs from '../../../../imgs/nodejs.png';
-import react from '../../../../imgs/react.png';
-import html5 from '../../../../imgs/html5.png';
+import laravel from '../../../../assets/imgs/laravel.png';
+import nodejs from '../../../../assets/imgs/nodejs.png';
+import react from '../../../../assets/imgs/react.png';
+import html5 from '../../../../assets/imgs/html5.png';
 
 const Slide = () => {
 	return (

@@ -11,7 +11,9 @@ import Admin from './components/admin/';
 import Posts from './components/admin/Posts';
 import AddPost from './components/admin/Posts/AddPost';
 import EditPost from './components/admin/Posts/EditPost';
-import SiteData from './components/admin/SiteData';
+import Settings from './components/admin/Settings';
+import AddSetting from './components/admin/Settings/AddSetting';
+import EditSetting from './components/admin/Settings/EditSetting';
 import Users from './components/admin/Users';
 import AddUser from './components/admin/Users/AddUser';
 import EditUser from './components/admin/Users/EditUser';
@@ -39,7 +41,9 @@ class Router extends Component {
         <Route exact path="/admin/categories" component={Categories}/>
         <Route exact path="/admin/categories/add" component={AddCategory}/>
         <Route exact path="/admin/categories/edit/:id" component={EditCategory}/>
-        <Route exact path="/admin/site-data" component={SiteData}/>
+        <Route exact path="/admin/settings" component={Settings}/>
+        <Route exact path="/admin/settings/add" component={AddSetting}/>
+        <Route exact path="/admin/settings/edit/:id" component={EditSetting}/>
       </Switch>
     );
   }

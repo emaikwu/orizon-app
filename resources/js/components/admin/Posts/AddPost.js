@@ -8,6 +8,8 @@ import ContentWrapper from '../ContentWrapper';
 import Processing from '../../utils/Processing';
 import AdminButton from '../../utils/AdminButton';
 import FileUpload from '../../utils/FileUpload';
+import {allCategories} from '../../../actions/categories';
+import {addPost} from '../../../actions/posts';
 
 class AddPost extends Component {
 	constructor(props) {
@@ -15,7 +17,35 @@ class AddPost extends Component {
 		this.state = {
 			adding: false
 		}
+		this.submit = this.submit.bind(this);
 	}
+
+	submit(e) {
+		e.preventDefault();
+
+		const title = e.target.title.value.trim();
+		const tags = e.target.tags.value.trim();
+		const images = e.target.images.value.trim();
+		const category_id = e.target.categoryId.value.trim();
+		const content = e.target.content.value.trim();
+		const status = e.target.status.value.trim();
+
+		const data = {title, tags, images, category_id, content, status, user_id:1};
+
+		this.setState({adding: true});
+
+		this.props.dispatch(addPost(data)).then(res => {
+			if(res) {
+				this.setState({adding: false});
+				this.props.history.push("/admin/posts");
+			}
+		})
+	}
+
+	componentDidMount() {
+		this.props.dispatch(allCategories());
+	}
+
 	render() {
 		const meta = {title: "Add post - Emaikwu Innocent"};
 		return (
@@ -24,7 +54,7 @@ class AddPost extends Component {
 					<ContentWrapper title="Add post" active="Add post" items={[{name:"Posts", linkTo:"/admin/posts"}]}>
 
 						<div className="col-sm-10 mx-auto">
-							<form>
+							<form onSubmit={(e) => this.submit(e)}>
 								<div className="row">
 									<div className="col-md-6">
 										<div className="form-group">
@@ -41,32 +71,34 @@ class AddPost extends Component {
 									<div className="col-md-12">
 										<div className="form-group">
 											<label>Post images</label>
-											<FileUpload/>
+											<FileUpload name="images"/>
 										</div>
 										<div className="form-group">
 											<label>Post category</label>
 											<select defaultValue="" name="categoryId" className="form-control">
 												<option value="" disabled>Select a category</option>
+												{this.props.categories.map((category, i) => {
+													return <option key={i} value={category.id}>{category.name}</option>
+												})}
 											</select>
 										</div>
 										<div className="form-group">
-											<label htmlFor="description">Post content</label>
-											<TinyMCE
-												config={{
-							          plugins: 'autolink link image lists print preview',
-							          toolbar: 'undo redo | bold italic | alignleft aligncenter alignright'
-								        }}
-											/>
+											<label htmlFor="content">Post content</label>
+											<textarea className="form-control" id="content" name="content"></textarea>
 										</div>
 										<div className="form-group">
 											<div className="form-check form-check-inline">
 												<label htmlFor="published">
-												<input type="radio" name='status' id="published"/> Publish
+												<input type="radio" name='status' id="published"
+													defaultValue="published"
+												/> Publish
 												</label>
 											</div>
 											<div className="form-check form-check-inline">
 												<label htmlFor="draft">
-												<input type="radio" name='status' defaultcheck="true" id="draft"/> Draft
+												<input type="radio" name='status' defaultChecked id="draft"
+													defaultValue="draft"
+												/> Draft
 												</label>
 											</div>
 										</div>
@@ -85,5 +117,8 @@ class AddPost extends Component {
 	}
 }
 
+const mapStateToProps = (state) => ({
+	categories: state.categories
+});
 
-export default connect()(AddPost);
+export default connect(mapStateToProps)(AddPost);

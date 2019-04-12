@@ -2,12 +2,15 @@ require('./bootstrap');
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
-import {Provider} from 'react-redux';
+import Router from './Router';
 import reducers from './reducers';
 
-import Router from './Router';
+import {Provider} from 'react-redux';
+import {createStore, applyMiddleware} from 'redux';
+import promiseMiddleware from "redux-promise";
+import ReduxThunk from 'redux-thunk';
 
-const store = reducers();
+const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
 
 const App = () => {
   return (
@@ -18,7 +21,7 @@ const App = () => {
 }
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={createStoreWithMiddleware(reducers(), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())}>
     <App/>
   </Provider>,
   document.getElementById('app'));

@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {MdFeedback} from 'react-icons/md';
+import {connect} from 'react-redux';
 
 import {IconButton} from '@material-ui/core';
 import FeedBack from '../utils/FeedBack';
 import SocialMediaIcons from '../utils/SocialMediaIcons';
 
-class Header extends Component {
+class Footer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -26,17 +27,25 @@ class Header extends Component {
       <footer className="footer">
       	<SocialMediaIcons/>
       	<div className="footer-contact wrapper clearfix">
-      		<div className="phone cols-2">
-      			<h3>Phone</h3>
-      			<div className="footer-icon"></div>
-	      		<p>+2348132338110</p>
-	      		<p>+2348186355121</p>
-	      	</div>
-	      	<div className="email cols-2">
-	      		<h3>Email</h3>
-	      		<div className="footer-icon"></div>
-	      		<p>support@emaikwuinnocent.com</p>
-	      	</div>
+      		{this.props.phones[0] || this.props.phones[1] ? (
+	      		<div className="phone cols-2">
+	      			<h3>Phone</h3>
+	      			<div className="footer-icon"></div>
+	      			{this.props.phones.map((phone, i) => {
+	      				return phone && <p key={i}>+234{phone}</p>
+	      			})}
+		      	</div>
+      			) : null}
+      		{
+      			this.props.email ? 
+      			<div className="email cols-2">
+		      		<h3>Email</h3>
+		      		<div className="footer-icon"></div>
+		      		<p>{this.props.email}</p>
+      			</div>
+
+      			: null
+      		}
       	</div>
       	<div className="copy">
       		<p>&copy; {new Date().getFullYear()} Emaikwu Innocent All rights reserved</p>
@@ -64,4 +73,9 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = (state) => ({
+	email: state.settings[0].email,
+	phones: [state.settings[0].phone_1, state.settings[0].phone_2]
+})
+
+export default connect(mapStateToProps)(Footer);
